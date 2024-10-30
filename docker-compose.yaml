@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+
+  db:
+    image: mysql
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_DATABASE: 'homework'
+    networks:
+      - homework
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - "7000:80"
+    networks:
+      - homework
+
+networks:
+  homework:
+    driver: bridge
