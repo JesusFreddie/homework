@@ -1,10 +1,15 @@
-@extends('layouts.main')
-@section('content')
+<x-app-layout>
+    <x-slot name="header">
+        <h2>
+            {{__('Панель администратора')}}
+        </h2>
+    </x-slot>
+
     <div class="py-12">
         <div class="max-w-7x1 mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rouded-lg">
+            <div class="overflow-hidden shadow-sm sm:rouded-lg mb-3">
                 @foreach($reports as $report)
-                    <div class='card'>
+                    <div class='card bg-white mb-3'>
                         <p>{{\Carbon\Carbon::parse($report->created_at)->translatedFormat('j F Y')}}</p>
                         <p>{{$report->user->fullName()}}</p>
                         <span class='card__number'>{{$report->number}}</span>
@@ -16,16 +21,16 @@
                                 <input type="hidden" name="id" value="{{$report->id}}">
                                 <select name="status_id" onchange="document.getElementById('form-update-{{$report->id}}').submit()">
                                     @foreach($statuses as $status)
-                                        <option value="{{$status->id}}">{{$status->name}}</option>
+                                        <option value="{{$status->id}}">{{$status->number}}</option>
                                     @endforeach
                                 </select>
                             </form>
                         @else
-                            <p>{{$report->status->name}}</p>
+                            <p>{{$report->status->number}}</p>
                         @endif
                     </div>
                 @endforeach
             </div>
         </div>
     </div>
-@endsection()
+</x-app-layout>

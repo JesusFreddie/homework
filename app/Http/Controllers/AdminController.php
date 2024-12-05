@@ -13,7 +13,6 @@ class AdminController extends Controller
     public function index(){
         $reports = Report::all();
         $statuses = Status::all();
-        $userId = Auth::id();
-        return view('admin.index', compact('reports', 'userId' , 'statuses'));
+        return view('admin.index', compact('reports', 'statuses'));
     }
 }

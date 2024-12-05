@@ -21,7 +21,6 @@
                         @csrf
                         <input type="submit" value="Удалить" class="text-sm text-red-600">
                     </form>
-                    <a href="{{route('reports.update', $report->id)}}"></a>
                 </div>
             @endforeach
         </div>

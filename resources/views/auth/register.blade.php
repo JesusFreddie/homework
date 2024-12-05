@@ -1,7 +1,7 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <h2 class="text-blue-600 text-2xl text-center font-semiboldnpm install imask mb-4">Регистрация</h2>
+    <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-2">
         @csrf
-
         <!-- Surname -->
         <div>
             <x-input-label for="surname" :value="__('Введите фамилию')" />
@@ -51,9 +51,19 @@
             <x-text-input id="password" class="block mt-1 w-full"
                           type="password"
                           name="password"
-                          required autocomplete="new-password" />
+                          required />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+
+        <div>
+            <x-input-label for="password_confirmation" :value="__('Повторите пароль')" />
+
+            <x-text-input id="password_confirmation" class="block mt-1 w-full"
+                          type="password"
+                          name="password_confirmation" required autocomplete="new-password" />
+
+            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end">
